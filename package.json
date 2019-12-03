@@ -1,0 +1,31 @@
+{
+  "name": "Jack_Christina_Movie_Data",
+  "version": "1.0.0",
+  "description": "API Movie Data Server",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app", 
+    "dev": "nodemon app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thinkful-ei-iguana/Jack_Christina_Movie_Data.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thinkful-ei-iguana/Jack_Christina_Movie_Data/issues"
+  },
+  "homepage": "https://github.com/thinkful-ei-iguana/Jack_Christina_Movie_Data#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.1"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "helmet": "^3.21.2",
+    "morgan": "^1.9.1"
+  }
+}
