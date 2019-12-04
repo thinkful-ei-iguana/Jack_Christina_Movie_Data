@@ -15,32 +15,29 @@ app.use(cors());
 app.use(validateBearerToken);
 
 function validateBearerToken(req, res, next){
-  const bearerToken = req.get('Authorization').split(' ')[1];
+  //console.log(req);
+  const bearerToken = req.get('Authorization');
   const apiToken = process.env.API_TOKEN;
-  if (bearerToken !== apiToken) {
+  console.log(bearerToken);
+  /*if (!bearerToken || bearerToken.split(' ')[1] !== apiToken) {
     return res.status(401).json({ error: 'Unauthorized request' })
   } 
-  
+  */
   console.log('validating');
   next();
-}
-
-//Search by genre, country or average vote.  Query string parameters.
-//By genre: includes non case sensitive string
-//By country: includes case sensitive string
-//By avearge vote: avg_vote >= supplied number
+} 
 
 function handleGet(req, res) {
   let movies = movieM;
   const{genre =  '', country = '', avgvote= ''} = req.query;
   if(genre !== ''){
     movies = movies.filter((element) =>{
-      if(element.genre.toLowerCase() === genre.toLowerCase()){ return element}
+      if(element.genre.toLowerCase().includes(genre.toLowerCase())){ return element}
     })
   }
   if(country !== ''){
     movies = movies.filter((element) =>{
-    if(element.country.toLowerCase() === country.toLowerCase()){return element}
+    if(element.country.toLowerCase().includes(country.toLowerCase())){return element}
     })
   }
   if(avgvote !== ''){
