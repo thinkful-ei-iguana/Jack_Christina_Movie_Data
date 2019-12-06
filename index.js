@@ -15,14 +15,13 @@ app.use(cors());
 app.use(validateBearerToken);
 
 function validateBearerToken(req, res, next){
-  //console.log(req);
   const bearerToken = req.get('Authorization');
   const apiToken = process.env.API_TOKEN;
   console.log(bearerToken);
-  /*if (!bearerToken || bearerToken.split(' ')[1] !== apiToken) {
+  if (!bearerToken || bearerToken.split(' ')[1] !== apiToken) {
     return res.status(401).json({ error: 'Unauthorized request' })
   } 
-  */
+  
   console.log('validating');
   next();
 } 
