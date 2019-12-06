@@ -29,22 +29,27 @@ function validateBearerToken(req, res, next){
 
 function handleGet(req, res) {
   let movies = movieM;
-  const{genre =  '', country = '', avgvote= ''} = req.query;
+  const{genre =  '', country = '', avg_vote= ''} = req.query;
   if(genre !== ''){
     movies = movies.filter((element) =>{
       if(element.genre.toLowerCase().includes(genre.toLowerCase())){ return element}
     })
   }
+  console.log(movies.length);
   if(country !== ''){
     movies = movies.filter((element) =>{
     if(element.country.toLowerCase().includes(country.toLowerCase())){return element}
     })
   }
-  if(avgvote !== ''){
+  console.log(movies.length);
+  console.log('avg vote is ' + avg_vote);
+  if(avg_vote !== ''){
+    
     movies = movies.filter((element)=>{
-    if(element.avg_vote >= parseInt(avgvote)){ return element}
+    if(element.avg_vote >= avg_vote){console.log('returning' + element.avg_vote); return element}
   })
   }
+  console.log(movies.length);
   res.send(movies);
 }
 
